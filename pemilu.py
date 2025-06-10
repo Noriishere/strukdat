@@ -1,10 +1,3 @@
-def verify(nama,  nik):
-    dataPeserta = dataPeserta()
-    if nama in dataPeserta and dataPeserta[nama] == nik:
-        return True
-    else:
-        return False
-    
 def dataPeserta():
     peserta = {
         "jhon" : "1234",
@@ -19,6 +12,13 @@ def dataPetugas():
         "petugas" : "petugas123"
         }
     return petugas
+
+def verify(nik, password):
+    data = dataPeserta()
+    if nik in data and data[nik] == password:
+        return True
+    else:
+        return False
 
 def verifyPetugas(usn, pw):
     data = dataPetugas()
@@ -39,3 +39,30 @@ def petugas():
             break
         else:
             print("USERNAME ATAU PASSWORD SALAH")
+            
+def peserta():
+    while True:
+        print("SELAMAT DATANG PESERTA PEMILU")
+        print("SILAHKAN VERIFIKASI KAN DIRI ANDA")
+        nama = input("Masukkan NIK Anda : ")
+        nik = input("Masukkan Password Anda : ")
+        login = verify(nama, nik)
+        if login:
+            print("SELAMAT ANDA BERHASIL LOGIN")
+            break
+        else:
+            print("NIK ATAU NAMA SALAH")
+
+def main():
+    print(f"\n{"="*9} LOGIN UNTUK VERIFIKASI PETUGAS {"="*9}")
+    
+    
+    print(f"\n{"="*12} SELAMAT DATANG DI PEMILU {"="*12}")
+    print(f"\n{"-"*21}| Menu |{"-"*21}")
+    print("-"*50)
+    print("{:<0} {:<5} {:<0} {:<38} {:<0}".format("|","No","|", "Pilihan", "|"))
+    print("-"*50)
+    print("{:<0} {:<5} {:<0} {:<38} {:<0}".format("|","1","|", "Vote", "|"))
+    print("{:<0} {:<5} {:<0} {:<38} {:<0}".format("|","2","|", "Exit", "|"))
+    print("-"*50)
+main()
